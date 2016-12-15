@@ -12,8 +12,13 @@ var userSchema = new mongoose.Schema({
 var profileSchema = new mongoose.Schema({
   username:String,
   status:String,
-  followed:[],
-  pic:String
+  followedBy:[],
+  following:[],
+  zipcode:String,
+  email:String,
+  avatar:String,
+  dob:String,
+  headline:String
 })
 var articleSchema = new mongoose.Schema({
   id:String,

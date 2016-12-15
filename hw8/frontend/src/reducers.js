@@ -10,6 +10,7 @@ const Reducer = (state =  {
 }, action) => {
 	switch(action.type) {
 		case 'loginToDo':
+		console.log("in login todo ")
 			return { ...state, nextId: state.nextId + 1, location: "Main.js",
 					todoItems: [ ...state.todoItems,
 						{id:state.nextId, text: action.text, done: false}]
@@ -25,7 +26,8 @@ const Reducer = (state =  {
 						{id:state.nextId, text: action.text, done: false}]
 			}
 		case 'updateHeadlineToDo':
-			return { ...state, nextId: state.nextId + 1, location: "Main.js", posts: [...posts, action.text],
+			console.log("in update headline to do")
+			return { ...state, nextId: state.nextId + 1, location: "Main.js", posts: [...state.posts, action.text],
 					todoItems: [ ...state.todoItems,
 						{id:state.nextId, text: action.text, done: false,}]
 			}

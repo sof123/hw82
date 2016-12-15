@@ -1,6 +1,6 @@
 {
      "netid": "sof1",
    "frontend": "http://guttural-plant.surge.sh/",
-   "backend": "https://ricebookappsof1.herokuapp.com"
+   "backend": "http://localhost:8080/"
 
 }

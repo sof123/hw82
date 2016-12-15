@@ -5,7 +5,7 @@ import  {connect}  from 'react-redux'
 export const ProfileItem = ({logout, goToMain}) =>
 (
       <div>
-        <link rel="stylesheet" type="text/css" href="styles.css" />
+
         <meta name="author" content="Simi Fagbemi" />
         <input type="button" defaultValue="Return to main page" onClick={goToMain} id="goToMainId" />
         <input type="button" defaultValue="logout" onClick={logout} id="logoutId" />

@@ -54,6 +54,10 @@ const register = (req, res) => {
   console.log(req.body)
   var username = req.body.username;
   var password = req.body.password;
+  var email = req.body.email;
+  var zipcode = req.body.zipcode;
+  var dob = req.body.dob;
+  var avatar = req.body.avatar
   console.log(username)
   console.log(password)
   var salt = "thesaltthesaltsaltysalt"
@@ -61,7 +65,7 @@ const register = (req, res) => {
   database.push({username: username, salt: salt, hash: md5(password.concat(salt))})
 
   var userObj = {username: username, salt: salt, hash: md5(password.concat(salt))}
-  var profObj = {username: username, status: defaultStatus, followed: [], pic:'http://www.clker.com/cliparts/h/D/5/O/s/2/stick-figure-black.svg'}
+  var profObj = {username: username, email: email, status: defaultStatus, headline: "default", dob:dob, zipcode:zipcode, following: [], avatar:avatar}
   User.create(userObj, function (err, small) {
   if (err)
   {
@@ -82,6 +86,11 @@ const register = (req, res) => {
   res.json(msg)
 }
 
+const putPassword = (req, res) => {
+  msg = {username:req.session.username, status: 'will not change'}
+  res.json(msg)
+}
+
 function logout(req, res){
   req.session.destroy();
   res.send("OK")
@@ -91,4 +100,5 @@ module.exports = app => {
      app.post('/login', login)
      app.post('/register', register)
      app.put('/logout', isLoggedIn, logout)
+     app.put('/password', putPassword)
 }

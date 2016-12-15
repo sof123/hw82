@@ -1,12 +1,13 @@
 //import {setLocation, getLocation} from '../location'
 import React, { Component, PropTypes } from 'react'
 import  {connect } from 'react-redux'
+//const loginAction = require('./profileActions').loginAction
 
 export const LandingItem = ({login}) =>
 (
       <div>
         <meta name="author" content="Simi Fagbemi" />
-        Create a new account
+        Create a neeeeew account
         <br /><br />
         <form id="signIn" name="submitForm" method="" action="" onSubmit={login}>
           <table className="form">
@@ -72,6 +73,7 @@ export const LandingItem = ({login}) =>
 //dispatching  method to reducer
 export default connect(null, (dispatch, ownProps) => {
         return {
-            login: () => dispatch({ type: 'loginToDo', id: ownProps.id })
+            login: () =>  dispatch({ type: 'loginToDo', id: ownProps.id })
+
         }
     })(LandingItem)

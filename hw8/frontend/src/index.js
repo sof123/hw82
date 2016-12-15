@@ -1,5 +1,5 @@
 
-require('expose?$!expose?jQuery!jquery')
+//require('expose?$!expose?jQuery!jquery')
 import React from 'react'
 import { render } from 'react-dom'
 import thunkMiddleware from 'redux-thunk'

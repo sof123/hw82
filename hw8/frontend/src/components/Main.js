@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import  {connect } from 'react-redux'
+import updateHeadlineAction from './profileActions'
 
 
 export const MainItem = ({ logout, goToProfile, updateHeadline, getArticles }) =>
   (
       <div>
-        <link rel="stylesheet" type="text/css" href="styles.css" />
+
         <div className="container" style={{position: 'relative', padding: '0 0 0 55px', backgroundColor: 'pink'}}>
           <input name="post" required />
           <input type="button" defaultValue="Post!" onclick id="postButton" />
@@ -55,7 +56,7 @@ export const MainItem = ({ logout, goToProfile, updateHeadline, getArticles }) =
             <br /><br />
             <span> TheKid</span>
             <br /><br />
-            <font id="headlineFont">"Attachment is the root of all suffering" </font>
+            <font id="headlineFont">"Attachment is the rooooot of all suffering" </font>
             <br /><br />
             <input id="headline" name="headline" required />
             <input type="button" defaultValue="Update Headline" onClick={updateHeadline} id="updateHeadlineButton" />
@@ -152,7 +153,7 @@ export const MainItem = ({ logout, goToProfile, updateHeadline, getArticles }) =
           return {
               logout: () => dispatch({ type: 'logoutToDo', id: ownProps.id }),
               goToProfile: () => dispatch({ type: 'goToProfileToDo', id: ownProps.id }),
-              updateHeadline: () => dispatch({ type: 'updateHeadlineToDo', id: ownProps.id }),
+              updateHeadline: (newHeadline,ownProps) => updateHeadlineAction(newHeadline)(dispatch),
               getArticles: () => dispatch({ type: 'getArticlesToDo', id: ownProps.id })
           }
       })(MainItem)
