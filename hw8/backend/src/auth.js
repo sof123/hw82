@@ -21,6 +21,7 @@ function login(req, res){
   console.log("in login")
   var username = req.body.username;
   var password = req.body.password;
+  console.log("on server " + username, password)
   if (!username || !password){
     res.sendStatus(400)
     return

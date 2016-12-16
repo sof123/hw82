@@ -28,8 +28,8 @@ function removedArray(arr, element)
 const putHeadline = (req, res) => {
   console.log(req.session.username)
   Profile.update({ username: req.session.username}, { $set: { headline: req.body.headline }}, (err, zip)=>{
-    var retObj = {username: req.session.username, headline: req.body.headline}
-    res.json(retObj)
+    //var retObj = {'username': req.session.username, 'headline': req.body.headline}
+    res.json({'username': req.session.username, 'headline': req.body.headline})
   });
 }
 
