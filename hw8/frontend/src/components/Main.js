@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import  {connect } from 'react-redux'
-import updateHeadlineAction from './profileActions'
+import {updateHeadlineAction, logoutAction} from './profileActions'
 
-
-export const MainItem = ({ logout, goToProfile, updateHeadline, getArticles }) =>
-  (
+export const MainItem = ({ headline, logout, goToProfile, updateHeadline, getArticles }) =>{
+  let headlineValue
+  return  (
       <div>
 
         <div className="container" style={{position: 'relative', padding: '0 0 0 55px', backgroundColor: 'pink'}}>
@@ -56,10 +56,10 @@ export const MainItem = ({ logout, goToProfile, updateHeadline, getArticles }) =
             <br /><br />
             <span> TheKid</span>
             <br /><br />
-            <font id="headlineFont">"Attachment is the rooooot of all suffering" </font>
+            <font id="headlineFont">{headline} </font>
             <br /><br />
-            <input id="headline" name="headline" required />
-            <input type="button" defaultValue="Update Headline" onClick={updateHeadline} id="updateHeadlineButton" />
+            <input id="headline" name="headline" ref={(a)=>headlineValue=a} required />
+            <input type="button" defaultValue="Update Headline" onClick={() => updateHeadline(headlineValue)} id="updateHeadlineButton" />
           </div>
           <input name="search" required />
           <input type="button" defaultValue="Search" onclick id="searchButton" />
@@ -148,12 +148,20 @@ export const MainItem = ({ logout, goToProfile, updateHeadline, getArticles }) =
       </div>
 
   )
+}
 
-  export default connect(null, (dispatch, ownProps) => {
+  export default connect( (state) =>
+                          {
+                            console.log(state)
+                            return {
+                              headline: state.headline,
+                            }
+                          },
+    (dispatch, ownProps) => {
           return {
-              logout: () => dispatch({ type: 'logoutToDo', id: ownProps.id }),
+              logout: () => logoutAction()(dispatch),
               goToProfile: () => dispatch({ type: 'goToProfileToDo', id: ownProps.id }),
-              updateHeadline: (newHeadline,ownProps) => updateHeadlineAction(newHeadline)(dispatch),
+              updateHeadline: (newHeadline) => updateHeadlineAction(newHeadline)(dispatch),
               getArticles: () => dispatch({ type: 'getArticlesToDo', id: ownProps.id })
           }
       })(MainItem)

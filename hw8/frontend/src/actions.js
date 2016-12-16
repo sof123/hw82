@@ -11,7 +11,7 @@ export const url = 'http://localhost:3000'
       }
     }
     console.log(payload)
-    if (payload) options.body = (payload)
+    if (payload) options.body = JSON.stringify(payload)
 
     return fetch(`${url}/${endpoint}`, options)
       .then(r => {
@@ -26,7 +26,7 @@ export const url = 'http://localhost:3000'
       }
       else {
         //to deebug
-        console.log('${method} ${endpoint} ${r.statusText}')
+        console.log(`${method} ${endpoint} ${r.statusText}`)
         throw new Error(r.statusText)
       }
       })

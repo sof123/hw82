@@ -1,5 +1,6 @@
 const Reducer = (state =  {
 	nextId: 2,
+	headline: "",
 	location: "Landing.js",
 	posts: [],
 	todoItems: [
@@ -27,9 +28,10 @@ const Reducer = (state =  {
 			}
 		case 'updateHeadlineToDo':
 			console.log("in update headline to do")
-			return { ...state, nextId: state.nextId + 1, location: "Main.js", posts: [...state.posts, action.text],
+			console.log("payload", action.payload)
+			return { ...state, nextId: state.nextId + 1, headline: action.payload, location: "Main.js", posts: [...state.posts, action.text],
 					todoItems: [ ...state.todoItems,
-						{id:state.nextId, text: action.text, done: false,}]
+						{id:state.nextId, done: false,}]
 			}
 		case 'getArticlesToDo':
 			return { ...state, nextId: state.nextId + 1, location: "Main.js",
